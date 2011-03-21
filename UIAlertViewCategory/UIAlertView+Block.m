@@ -18,20 +18,24 @@ static CancelBlock _cancelBlock;
                    onCancel:(CancelBlock) cancelled
                     message:(NSString*) message 
           cancelButtonTitle:(NSString*) cancelButtonTitle
-          otherButtonTitles:(NSString*) firstButton, va_list(argumentList)
+          otherButtonTitles:(NSArray*) otherButtons
 {
     
     [_cancelBlock release];
     _cancelBlock  = [cancelled copy];
 
     [_dismissBlock release];
-    _dismissBlock  = [cancelled copy];
+    _dismissBlock  = [dismissed copy];
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
                                                     message:message
                                                    delegate:[self class]
                                           cancelButtonTitle:cancelButtonTitle
-                                          otherButtonTitles:firstButton, argumentList, nil];
+                                          otherButtonTitles:nil];
+    
+    for(NSString *buttonTitle in otherButtons)
+        [alert addButtonWithTitle:buttonTitle];
+    
     [alert show];
     [alert release];
 }

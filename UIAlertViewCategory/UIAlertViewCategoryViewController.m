@@ -42,7 +42,7 @@
      }
                             message:@"Hello World" 
                   cancelButtonTitle:@"Dismiss" 
-                  otherButtonTitles:@"First", @"Second", nil];
+                  otherButtonTitles:[NSArray arrayWithObjects:@"First", @"Second", nil]];
 }
 
 
