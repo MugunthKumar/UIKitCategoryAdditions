@@ -1,5 +1,5 @@
 //
-//  UIAlertView+Block.h
+//  UIAlertView+MKBlockAdditions.h
 //  UIAlertViewCategory
 //
 //  Created by Mugunth on 21/03/11.
@@ -7,9 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef void (^DismissBlock)(int buttonIndex);
-typedef void (^CancelBlock)();
+#import "MKBlockAdditions.h"
 
 @interface UIAlertView (Block) <UIAlertViewDelegate> {
     

@@ -16,7 +16,8 @@
 		AB5E75621336DD7A0016813D /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB5E75601336DD7A0016813D /* MainWindow.xib */; };
 		AB5E75651336DD7A0016813D /* UIAlertViewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5E75641336DD7A0016813D /* UIAlertViewCategoryViewController.m */; };
 		AB5E75681336DD7A0016813D /* UIAlertViewCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB5E75661336DD7A0016813D /* UIAlertViewCategoryViewController.xib */; };
-		AB5E75701336DDA20016813D /* UIAlertView+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5E756F1336DDA20016813D /* UIAlertView+Block.m */; };
+		AB5E75701336DDA20016813D /* UIAlertView+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5E756F1336DDA20016813D /* UIAlertView+MKBlockAdditions.m */; };
+		AB8805AF133771930021F74B /* UIActionSheet+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AB8805AD133771930021F74B /* UIActionSheet+MKBlockAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,8 +35,11 @@
 		AB5E75631336DD7A0016813D /* UIAlertViewCategoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIAlertViewCategoryViewController.h; sourceTree = "<group>"; };
 		AB5E75641336DD7A0016813D /* UIAlertViewCategoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIAlertViewCategoryViewController.m; sourceTree = "<group>"; };
 		AB5E75671336DD7A0016813D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/UIAlertViewCategoryViewController.xib; sourceTree = "<group>"; };
-		AB5E756E1336DDA20016813D /* UIAlertView+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Block.h"; sourceTree = "<group>"; };
-		AB5E756F1336DDA20016813D /* UIAlertView+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Block.m"; sourceTree = "<group>"; };
+		AB5E756E1336DDA20016813D /* UIAlertView+MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "UIAlertView+MKBlockAdditions.h"; sourceTree = "<group>"; };
+		AB5E756F1336DDA20016813D /* UIAlertView+MKBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+MKBlockAdditions.m"; sourceTree = "<group>"; };
+		AB8805AC133771930021F74B /* UIActionSheet+MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; name = "UIActionSheet+MKBlockAdditions.h"; path = "../UIActionSheet+MKBlockAdditions.h"; sourceTree = "<group>"; };
+		AB8805AD133771930021F74B /* UIActionSheet+MKBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIActionSheet+MKBlockAdditions.m"; path = "../UIActionSheet+MKBlockAdditions.m"; sourceTree = "<group>"; };
+		AB8805B1133771FE0021F74B /* MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBlockAdditions.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,7 @@
 		AB5E753F1336DD790016813D = {
 			isa = PBXGroup;
 			children = (
+				AB8805B1133771FE0021F74B /* MKBlockAdditions.h */,
 				AB5E75541336DD7A0016813D /* UIAlertViewCategory */,
 				AB5E754D1336DD790016813D /* Frameworks */,
 				AB5E754B1336DD790016813D /* Products */,
@@ -89,8 +94,10 @@
 				AB5E75641336DD7A0016813D /* UIAlertViewCategoryViewController.m */,
 				AB5E75661336DD7A0016813D /* UIAlertViewCategoryViewController.xib */,
 				AB5E75551336DD7A0016813D /* Supporting Files */,
-				AB5E756E1336DDA20016813D /* UIAlertView+Block.h */,
-				AB5E756F1336DDA20016813D /* UIAlertView+Block.m */,
+				AB5E756E1336DDA20016813D /* UIAlertView+MKBlockAdditions.h */,
+				AB5E756F1336DDA20016813D /* UIAlertView+MKBlockAdditions.m */,
+				AB8805AC133771930021F74B /* UIActionSheet+MKBlockAdditions.h */,
+				AB8805AD133771930021F74B /* UIActionSheet+MKBlockAdditions.m */,
 			);
 			path = UIAlertViewCategory;
 			sourceTree = "<group>";
@@ -169,7 +176,8 @@
 				AB5E755C1336DD7A0016813D /* main.m in Sources */,
 				AB5E755F1336DD7A0016813D /* UIAlertViewCategoryAppDelegate.m in Sources */,
 				AB5E75651336DD7A0016813D /* UIAlertViewCategoryViewController.m in Sources */,
-				AB5E75701336DDA20016813D /* UIAlertView+Block.m in Sources */,
+				AB5E75701336DDA20016813D /* UIAlertView+MKBlockAdditions.m in Sources */,
+				AB8805AF133771930021F74B /* UIActionSheet+MKBlockAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +292,7 @@
 				AB5E756D1336DD7A0016813D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

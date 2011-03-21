@@ -1,12 +1,12 @@
 //
-//  UIAlertView+Block.m
+//  UIAlertView+MKBlockAdditions.m
 //  UIAlertViewCategory
 //
 //  Created by Mugunth on 21/03/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "UIAlertView+Block.h"
+#import "UIAlertView+MKBlockAdditions.h"
 
 static DismissBlock _dismissBlock;
 static CancelBlock _cancelBlock;
@@ -43,13 +43,9 @@ static CancelBlock _cancelBlock;
 + (void) alertViewWithTitle:(NSString*) title 
                     message:(NSString*) message
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
-                                                    message:message
-                                                   delegate:nil
-                                          cancelButtonTitle:NSLocalizedString(@"Dismiss", @"")
-                                          otherButtonTitles: nil];
-    [alert show];
-    [alert release];
+    [UIAlertView alertViewWithTitle:title 
+                            message:message 
+                  cancelButtonTitle:NSLocalizedString(@"Dismiss", @"")];
 }
 
 + (void) alertViewWithTitle:(NSString*) title 
@@ -75,7 +71,7 @@ static CancelBlock _cancelBlock;
 	}
     else
     {
-        _dismissBlock(buttonIndex);
+        _dismissBlock(buttonIndex - 1); // cancel button is button 0
         [_dismissBlock release];
     }
 }
