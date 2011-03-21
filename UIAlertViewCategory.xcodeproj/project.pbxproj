@@ -16,6 +16,7 @@
 		AB5E75621336DD7A0016813D /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB5E75601336DD7A0016813D /* MainWindow.xib */; };
 		AB5E75651336DD7A0016813D /* UIAlertViewCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5E75641336DD7A0016813D /* UIAlertViewCategoryViewController.m */; };
 		AB5E75681336DD7A0016813D /* UIAlertViewCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB5E75661336DD7A0016813D /* UIAlertViewCategoryViewController.xib */; };
+		AB5E75701336DDA20016813D /* UIAlertView+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5E756F1336DDA20016813D /* UIAlertView+Block.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,16 +24,18 @@
 		AB5E754E1336DD790016813D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AB5E75501336DD790016813D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AB5E75521336DD790016813D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		AB5E75561336DD7A0016813D /* UIAlertViewCategory-Info.plist */ = {isa = PBXFileReference; path = "UIAlertViewCategory-Info.plist"; sourceTree = "<group>"; };
+		AB5E75561336DD7A0016813D /* UIAlertViewCategory-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UIAlertViewCategory-Info.plist"; sourceTree = "<group>"; };
 		AB5E75581336DD7A0016813D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		AB5E755A1336DD7A0016813D /* UIAlertViewCategory-Prefix.pch */ = {isa = PBXFileReference; path = "UIAlertViewCategory-Prefix.pch"; sourceTree = "<group>"; };
+		AB5E755A1336DD7A0016813D /* UIAlertViewCategory-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertViewCategory-Prefix.pch"; sourceTree = "<group>"; };
 		AB5E755B1336DD7A0016813D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		AB5E755D1336DD7A0016813D /* UIAlertViewCategoryAppDelegate.h */ = {isa = PBXFileReference; path = UIAlertViewCategoryAppDelegate.h; sourceTree = "<group>"; };
+		AB5E755D1336DD7A0016813D /* UIAlertViewCategoryAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIAlertViewCategoryAppDelegate.h; sourceTree = "<group>"; };
 		AB5E755E1336DD7A0016813D /* UIAlertViewCategoryAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIAlertViewCategoryAppDelegate.m; sourceTree = "<group>"; };
 		AB5E75611336DD7A0016813D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		AB5E75631336DD7A0016813D /* UIAlertViewCategoryViewController.h */ = {isa = PBXFileReference; path = UIAlertViewCategoryViewController.h; sourceTree = "<group>"; };
+		AB5E75631336DD7A0016813D /* UIAlertViewCategoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIAlertViewCategoryViewController.h; sourceTree = "<group>"; };
 		AB5E75641336DD7A0016813D /* UIAlertViewCategoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIAlertViewCategoryViewController.m; sourceTree = "<group>"; };
 		AB5E75671336DD7A0016813D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/UIAlertViewCategoryViewController.xib; sourceTree = "<group>"; };
+		AB5E756E1336DDA20016813D /* UIAlertView+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Block.h"; sourceTree = "<group>"; };
+		AB5E756F1336DDA20016813D /* UIAlertView+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Block.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				AB5E75641336DD7A0016813D /* UIAlertViewCategoryViewController.m */,
 				AB5E75661336DD7A0016813D /* UIAlertViewCategoryViewController.xib */,
 				AB5E75551336DD7A0016813D /* Supporting Files */,
+				AB5E756E1336DDA20016813D /* UIAlertView+Block.h */,
+				AB5E756F1336DDA20016813D /* UIAlertView+Block.m */,
 			);
 			path = UIAlertViewCategory;
 			sourceTree = "<group>";
@@ -164,6 +169,7 @@
 				AB5E755C1336DD7A0016813D /* main.m in Sources */,
 				AB5E755F1336DD7A0016813D /* UIAlertViewCategoryAppDelegate.m in Sources */,
 				AB5E75651336DD7A0016813D /* UIAlertViewCategoryViewController.m in Sources */,
+				AB5E75701336DDA20016813D /* UIAlertView+Block.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +212,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -220,7 +226,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -237,6 +243,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UIAlertViewCategory/UIAlertViewCategory-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "UIAlertViewCategory/UIAlertViewCategory-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -250,6 +257,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UIAlertViewCategory/UIAlertViewCategory-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "UIAlertViewCategory/UIAlertViewCategory-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;

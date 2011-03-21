@@ -7,6 +7,7 @@
 //
 
 #import "UIAlertViewCategoryViewController.h"
+#import "UIAlertView+Block.h"
 
 @implementation UIAlertViewCategoryViewController
 
@@ -25,13 +26,25 @@
 
 #pragma mark - View lifecycle
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [UIAlertView alertViewWithTitle:@"Test" 
+                          onDismiss:^(int buttonIndex)
+     {
+         NSLog(@"%d", buttonIndex);
+     }
+                           onCancel:^()
+     {
+         NSLog(@"Cancelled");         
+     }
+                            message:@"Hello World" 
+                  cancelButtonTitle:@"Dismiss" 
+                  otherButtonTitles:@"First", @"Second", nil];
 }
-*/
+
 
 - (void)viewDidUnload
 {
