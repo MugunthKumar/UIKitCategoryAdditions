@@ -18,7 +18,7 @@ static CancelBlock _cancelBlock;
                    onCancel:(CancelBlock) cancelled
                     message:(NSString*) message 
           cancelButtonTitle:(NSString*) cancelButtonTitle
-          otherButtonTitles:(NSString*) otherButtons, ...
+          otherButtonTitles:(NSString*) firstButton, va_list(argumentList)
 {
     
     [_cancelBlock release];
@@ -31,7 +31,7 @@ static CancelBlock _cancelBlock;
                                                     message:message
                                                    delegate:[self class]
                                           cancelButtonTitle:cancelButtonTitle
-                                          otherButtonTitles:otherButtons, nil];
+                                          otherButtonTitles:firstButton, argumentList, nil];
     [alert show];
     [alert release];
 }
@@ -64,7 +64,7 @@ static CancelBlock _cancelBlock;
 
 + (void)alertView:(UIAlertView*) alertView didDismissWithButtonIndex:(NSInteger) buttonIndex
 {
-	if(buttonIndex != [alertView cancelButtonIndex])
+	if(buttonIndex == [alertView cancelButtonIndex])
 	{
 		_cancelBlock();
         [_cancelBlock release];

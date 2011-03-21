@@ -27,7 +27,7 @@ typedef void (^CancelBlock)();
                    onCancel:(CancelBlock) cancelled
                     message:(NSString*) message 
           cancelButtonTitle:(NSString*) cancelButtonTitle
-          otherButtonTitles:(NSString*) otherButtons, ... NS_REQUIRES_NIL_TERMINATION;
+          otherButtonTitles:(NSString*) otherButtons, va_list(others);
 
 
 @end
