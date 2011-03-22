@@ -12,4 +12,7 @@
     
 }
 
+-(IBAction) alertTapped:(id) sender;
+-(IBAction) actionTapped:(id) sender;
+-(IBAction) photoTapped:(id) sender;
 @end

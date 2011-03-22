@@ -25,15 +25,9 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
 
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
+-(IBAction) alertTapped:(id) sender
 {
-    [super viewDidLoad];
-    
-    /*
     [UIAlertView alertViewWithTitle:@"Test" 
                             message:@"Hello World" 
                   cancelButtonTitle:@"Dismiss" 
@@ -47,9 +41,10 @@
          NSLog(@"Cancelled");         
      }
      ];
-     */
-    
-    /*
+}
+
+-(IBAction) actionTapped:(id) sender
+{
     [UIActionSheet actionSheetWithTitle:@"Title" 
                                 message:@"Message" 
                  destructiveButtonTitle:@"Delete" 
@@ -63,9 +58,10 @@
      {
          NSLog(@"Cancelled");
      }];
-     
-     */
-    
+}
+
+-(IBAction) photoTapped:(id) sender
+{
     [UIActionSheet photoPickerWithTitle:@"Choose an avatar" 
                              showInView:self.view 
                               presentVC:self 
