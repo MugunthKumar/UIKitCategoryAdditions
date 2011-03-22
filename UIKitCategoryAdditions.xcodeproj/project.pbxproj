@@ -14,7 +14,6 @@
 		ABD7411C13388C9E00899EE2 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABD7410E13388C9E00899EE2 /* MainWindow.xib */; };
 		ABD7411D13388C9E00899EE2 /* UIKitCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABD7411013388C9E00899EE2 /* UIKitCategoryViewController.xib */; };
 		ABD7411E13388C9E00899EE2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD7411213388C9E00899EE2 /* main.m */; };
-		ABD7412013388C9E00899EE2 /* UIKitCategoryAdditions-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABD7411513388C9E00899EE2 /* UIKitCategoryAdditions-Info.plist */; };
 		ABD7412113388C9E00899EE2 /* UIKitCategoryAdditionsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD7411813388C9E00899EE2 /* UIKitCategoryAdditionsAppDelegate.m */; };
 		ABD7412213388C9E00899EE2 /* UIKitCategoryAdditionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD7411A13388C9E00899EE2 /* UIKitCategoryAdditionsViewController.m */; };
 		ABD7413913388D3400899EE2 /* UIActionSheet+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD7413613388D3400899EE2 /* UIActionSheet+MKBlockAdditions.m */; };
@@ -164,7 +163,6 @@
 				ABD7411B13388C9E00899EE2 /* InfoPlist.strings in Resources */,
 				ABD7411C13388C9E00899EE2 /* MainWindow.xib in Resources */,
 				ABD7411D13388C9E00899EE2 /* UIKitCategoryViewController.xib in Resources */,
-				ABD7412013388C9E00899EE2 /* UIKitCategoryAdditions-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,7 +223,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -239,7 +237,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 			};
