@@ -1,0 +1,4 @@
+Do whatever you want to do with this code.
+But don't remove the attribution from the source code while re-distribution.
+
+If you use this code in your apps, attribution is not necessary on the product, but you must retain the license/copyright notices on the source code.
