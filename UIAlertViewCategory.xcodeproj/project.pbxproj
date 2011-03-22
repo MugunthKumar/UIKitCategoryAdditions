@@ -35,11 +35,11 @@
 		AB5E75631336DD7A0016813D /* UIAlertViewCategoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIAlertViewCategoryViewController.h; sourceTree = "<group>"; };
 		AB5E75641336DD7A0016813D /* UIAlertViewCategoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIAlertViewCategoryViewController.m; sourceTree = "<group>"; };
 		AB5E75671336DD7A0016813D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/UIAlertViewCategoryViewController.xib; sourceTree = "<group>"; };
-		AB5E756E1336DDA20016813D /* UIAlertView+MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "UIAlertView+MKBlockAdditions.h"; sourceTree = "<group>"; };
+		AB5E756E1336DDA20016813D /* UIAlertView+MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+MKBlockAdditions.h"; sourceTree = "<group>"; };
 		AB5E756F1336DDA20016813D /* UIAlertView+MKBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+MKBlockAdditions.m"; sourceTree = "<group>"; };
-		AB8805AC133771930021F74B /* UIActionSheet+MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; name = "UIActionSheet+MKBlockAdditions.h"; path = "../UIActionSheet+MKBlockAdditions.h"; sourceTree = "<group>"; };
+		AB8805AC133771930021F74B /* UIActionSheet+MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIActionSheet+MKBlockAdditions.h"; path = "../UIActionSheet+MKBlockAdditions.h"; sourceTree = "<group>"; };
 		AB8805AD133771930021F74B /* UIActionSheet+MKBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIActionSheet+MKBlockAdditions.m"; path = "../UIActionSheet+MKBlockAdditions.m"; sourceTree = "<group>"; };
-		AB8805B1133771FE0021F74B /* MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBlockAdditions.h; sourceTree = "<group>"; };
+		AB8805B1133771FE0021F74B /* MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MKBlockAdditions.h; path = ../MKBlockAdditions.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +59,6 @@
 		AB5E753F1336DD790016813D = {
 			isa = PBXGroup;
 			children = (
-				AB8805B1133771FE0021F74B /* MKBlockAdditions.h */,
 				AB5E75541336DD7A0016813D /* UIAlertViewCategory */,
 				AB5E754D1336DD790016813D /* Frameworks */,
 				AB5E754B1336DD790016813D /* Products */,
@@ -94,6 +93,7 @@
 				AB5E75641336DD7A0016813D /* UIAlertViewCategoryViewController.m */,
 				AB5E75661336DD7A0016813D /* UIAlertViewCategoryViewController.xib */,
 				AB5E75551336DD7A0016813D /* Supporting Files */,
+				AB8805B1133771FE0021F74B /* MKBlockAdditions.h */,
 				AB5E756E1336DDA20016813D /* UIAlertView+MKBlockAdditions.h */,
 				AB5E756F1336DDA20016813D /* UIAlertView+MKBlockAdditions.m */,
 				AB8805AC133771930021F74B /* UIActionSheet+MKBlockAdditions.h */,

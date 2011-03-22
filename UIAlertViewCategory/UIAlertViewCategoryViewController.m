@@ -8,6 +8,7 @@
 
 #import "UIAlertViewCategoryViewController.h"
 #import "UIAlertView+MKBlockAdditions.h"
+#import "UIActionSheet+MKBlockAdditions.h"
 
 @implementation UIAlertViewCategoryViewController
 
@@ -31,6 +32,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    /*
     [UIAlertView alertViewWithTitle:@"Test" 
                             message:@"Hello World" 
                   cancelButtonTitle:@"Dismiss" 
@@ -44,6 +47,37 @@
          NSLog(@"Cancelled");         
      }
      ];
+     */
+    
+    /*
+    [UIActionSheet actionSheetWithTitle:@"Title" 
+                                message:@"Message" 
+                 destructiveButtonTitle:@"Delete" 
+                                buttons:[NSArray arrayWithObjects:@"But 1", @"But 2", nil]
+                             showInView:self.view 
+                              onDismiss:^(int buttonIndex)
+     {
+         NSLog(@"%d", buttonIndex);
+     }
+                               onCancel:^
+     {
+         NSLog(@"Cancelled");
+     }];
+     
+     */
+    
+    [UIActionSheet photoPickerWithTitle:@"Choose an avatar" 
+                             showInView:self.view 
+                              presentVC:self 
+                          onPhotoPicked:^(UIImage* image) 
+     {
+         NSData *data = UIImagePNGRepresentation(image);
+         [data writeToFile:@"/Users/mugunth/Desktop/test.png" atomically:YES];
+     }
+                               onCancel:^
+     {
+         NSLog(@"Cancelled"); 
+     }];
 }
 
 

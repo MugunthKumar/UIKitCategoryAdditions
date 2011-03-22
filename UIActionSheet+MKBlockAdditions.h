@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MKBlockAdditions.h"
 
-@interface UIActionSheet (MKBlockAdditions) <UIActionSheetDelegate> {
+@interface UIActionSheet (MKBlockAdditions) <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
     
 }
 
@@ -32,7 +32,8 @@
 
 + (void) photoPickerWithTitle:(NSString*) title
                    showInView:(UIView*) view
-                    onDismiss:(DismissBlock) dismissed                   
+                    presentVC:(UIViewController*) presentView
+                onPhotoPicked:(PhotoPickedBlock) photoPicked                   
                      onCancel:(CancelBlock) cancelled;
 
 @end

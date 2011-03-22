@@ -8,4 +8,6 @@
 
 typedef void (^DismissBlock)(int buttonIndex);
 typedef void (^CancelBlock)();
+typedef void (^PhotoPickedBlock)(UIImage *chosenImage);
 
+#define kPhotoActionSheetTag 10000
