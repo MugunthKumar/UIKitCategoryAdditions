@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MKBlockAdditions.h"
 
-@interface UIActionSheet (MKBlockAdditions) <UIAlertViewDelegate> {
+@interface UIActionSheet (MKBlockAdditions) <UIActionSheetDelegate> {
     
 }
 
@@ -21,18 +21,18 @@
                     onCancel:(CancelBlock) cancelled;
 
 
-+ (void) alertViewWithTitle:(NSString*) title 
-                    message:(NSString*) message          
-     destructiveButtonTitle:(NSString*) descructiveButtonTitle
-                    buttons:(NSArray*) buttonTitles
-                 showInView:(UIView*) view
-                  onDismiss:(DismissBlock) dismissed                   
-                   onCancel:(CancelBlock) cancelled;
++ (void) actionSheetWithTitle:(NSString*) title                     
+                      message:(NSString*) message          
+       destructiveButtonTitle:(NSString*) destructiveButtonTitle
+                      buttons:(NSArray*) buttonTitles
+                   showInView:(UIView*) view
+                    onDismiss:(DismissBlock) dismissed                   
+                     onCancel:(CancelBlock) cancelled;
 
 
-+ (void) photoPickerAlertViewWithTitle:(NSString*) title
-                            showInView:(UIView*) view
-                             onDismiss:(DismissBlock) dismissed                   
-                              onCancel:(CancelBlock) cancelled;
++ (void) photoPickerWithTitle:(NSString*) title
+                   showInView:(UIView*) view
+                    onDismiss:(DismissBlock) dismissed                   
+                     onCancel:(CancelBlock) cancelled;
 
 @end
