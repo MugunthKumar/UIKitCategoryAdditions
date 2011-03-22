@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'UIAlertViewCategory' target in the 'UIAlertViewCategory' project
+// Prefix header for all source files of the 'UIKitCategoryAdditions' target in the 'UIKitCategoryAdditions' project
 //
 
 #import <Availability.h>

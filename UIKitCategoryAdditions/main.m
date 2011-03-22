@@ -1,6 +1,6 @@
 //
 //  main.m
-//  UIAlertViewCategory
+//  UIKitCategoryAdditions
 //
 //  Created by Mugunth on 21/03/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.

@@ -1,16 +1,16 @@
 //
-//  UIAlertViewCategoryViewController.m
-//  UIAlertViewCategory
+//  UIKitCategoryAdditionsViewController.m
+//  UIKitCategoryAdditions
 //
 //  Created by Mugunth on 21/03/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "UIAlertViewCategoryViewController.h"
+#import "UIKitCategoryAdditionsViewController.h"
 #import "UIAlertView+MKBlockAdditions.h"
 #import "UIActionSheet+MKBlockAdditions.h"
 
-@implementation UIAlertViewCategoryViewController
+@implementation UIKitCategoryAdditionsViewController
 
 - (void)dealloc
 {

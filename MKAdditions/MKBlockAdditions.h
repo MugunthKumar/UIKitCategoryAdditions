@@ -1,6 +1,6 @@
 //
 //  MKBlockAdditions.h
-//  UIAlertViewCategory
+//  UIKitCategoryAdditions
 //
 //  Created by Mugunth on 21/03/11.
 //  Copyright 2011 Steinlogic All rights reserved.

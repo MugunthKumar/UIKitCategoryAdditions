@@ -1,16 +1,16 @@
 //
-//  UIAlertViewCategoryAppDelegate.m
-//  UIAlertViewCategory
+//  UIKitCategoryAdditionsAppDelegate.m
+//  UIKitCategoryAdditions
 //
 //  Created by Mugunth on 21/03/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "UIAlertViewCategoryAppDelegate.h"
+#import "UIKitCategoryAdditionsAppDelegate.h"
 
-#import "UIAlertViewCategoryViewController.h"
+#import "UIKitCategoryAdditionsViewController.h"
 
-@implementation UIAlertViewCategoryAppDelegate
+@implementation UIKitCategoryAdditionsAppDelegate
 
 
 @synthesize window=_window;

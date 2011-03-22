@@ -1,6 +1,6 @@
 //
 //  UIActionSheet+MKBlockAdditions.m
-//  UIAlertViewCategory
+//  UIKitCategoryAdditions
 //
 //  Created by Mugunth on 21/03/11.
 //  Copyright 2011 Steinlogic All rights reserved.
@@ -171,13 +171,13 @@ static UIViewController *_presentVC;
             picker.delegate = [self class];
             picker.allowsEditing = YES;
             
-            if(buttonIndex == 0) 
+            if(buttonIndex == 1) 
             {                
-                picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-            }
-            else if(buttonIndex == 1)
-            {
                 picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+            }
+            else if(buttonIndex == 2)
+            {
+                picker.sourceType = UIImagePickerControllerSourceTypeCamera;;
             }
             
             [_presentVC presentModalViewController:picker animated:YES];
