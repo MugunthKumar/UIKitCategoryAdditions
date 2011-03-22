@@ -21,10 +21,10 @@
           cancelButtonTitle:(NSString*) cancelButtonTitle;
 
 + (void) alertViewWithTitle:(NSString*) title                    
-                  onDismiss:(DismissBlock) dismissed                   
-                   onCancel:(CancelBlock) cancelled
                     message:(NSString*) message 
           cancelButtonTitle:(NSString*) cancelButtonTitle
-          otherButtonTitles:(NSArray*) otherButtons;
+          otherButtonTitles:(NSArray*) otherButtons
+                  onDismiss:(DismissBlock) dismissed                   
+                   onCancel:(CancelBlock) cancelled;
 
 @end

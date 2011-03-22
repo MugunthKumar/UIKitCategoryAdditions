@@ -7,7 +7,7 @@
 //
 
 #import "UIAlertViewCategoryViewController.h"
-#import "UIAlertView+Block.h"
+#import "UIAlertView+MKBlockAdditions.h"
 
 @implementation UIAlertViewCategoryViewController
 
@@ -32,6 +32,9 @@
 {
     [super viewDidLoad];
     [UIAlertView alertViewWithTitle:@"Test" 
+                            message:@"Hello World" 
+                  cancelButtonTitle:@"Dismiss" 
+                  otherButtonTitles:[NSArray arrayWithObjects:@"First", @"Second", nil]
                           onDismiss:^(int buttonIndex)
      {
          NSLog(@"%d", buttonIndex);
@@ -40,9 +43,7 @@
      {
          NSLog(@"Cancelled");         
      }
-                            message:@"Hello World" 
-                  cancelButtonTitle:@"Dismiss" 
-                  otherButtonTitles:[NSArray arrayWithObjects:@"First", @"Second", nil]];
+     ];
 }
 
 

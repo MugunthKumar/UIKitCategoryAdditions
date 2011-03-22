@@ -14,11 +14,11 @@ static CancelBlock _cancelBlock;
 @implementation UIAlertView (Block)
 
 + (void) alertViewWithTitle:(NSString*) title                    
-                  onDismiss:(DismissBlock) dismissed                   
-                   onCancel:(CancelBlock) cancelled
                     message:(NSString*) message 
           cancelButtonTitle:(NSString*) cancelButtonTitle
           otherButtonTitles:(NSArray*) otherButtons
+                  onDismiss:(DismissBlock) dismissed                   
+                   onCancel:(CancelBlock) cancelled
 {
     
     [_cancelBlock release];
