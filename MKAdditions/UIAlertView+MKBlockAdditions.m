@@ -67,12 +67,10 @@ static CancelBlock _cancelBlock;
 	if(buttonIndex == [alertView cancelButtonIndex])
 	{
 		_cancelBlock();
-        [_cancelBlock release];
 	}
     else
     {
         _dismissBlock(buttonIndex - 1); // cancel button is button 0
-        [_dismissBlock release];
     }
 }
 @end
