@@ -6,6 +6,8 @@
 //  Copyright 2011 Steinlogic All rights reserved.
 //
 
+typedef void (^VoidBlock)();
+
 typedef void (^DismissBlock)(int buttonIndex);
 typedef void (^CancelBlock)();
 typedef void (^PhotoPickedBlock)(UIImage *chosenImage);

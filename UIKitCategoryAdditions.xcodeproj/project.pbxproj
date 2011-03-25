@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB171ABE133CE804006867EB /* NSObject+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AB171ABD133CE804006867EB /* NSObject+MKBlockAdditions.m */; };
 		AB5E754F1336DD790016813D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB5E754E1336DD790016813D /* UIKit.framework */; };
 		AB5E75511336DD790016813D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB5E75501336DD790016813D /* Foundation.framework */; };
 		AB5E75531336DD7A0016813D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB5E75521336DD790016813D /* CoreGraphics.framework */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB171ABC133CE804006867EB /* NSObject+MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MKBlockAdditions.h"; sourceTree = "<group>"; };
+		AB171ABD133CE804006867EB /* NSObject+MKBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MKBlockAdditions.m"; sourceTree = "<group>"; };
 		AB5E754A1336DD790016813D /* UIKitCategoryAdditions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitCategoryAdditions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5E754E1336DD790016813D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AB5E75501336DD790016813D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -109,6 +112,8 @@
 				ABD7413613388D3400899EE2 /* UIActionSheet+MKBlockAdditions.m */,
 				ABD7413713388D3400899EE2 /* UIAlertView+MKBlockAdditions.h */,
 				ABD7413813388D3400899EE2 /* UIAlertView+MKBlockAdditions.m */,
+				AB171ABC133CE804006867EB /* NSObject+MKBlockAdditions.h */,
+				AB171ABD133CE804006867EB /* NSObject+MKBlockAdditions.m */,
 			);
 			path = MKAdditions;
 			sourceTree = "<group>";
@@ -178,6 +183,7 @@
 				ABD7412213388C9E00899EE2 /* UIKitCategoryAdditionsViewController.m in Sources */,
 				ABD7413913388D3400899EE2 /* UIActionSheet+MKBlockAdditions.m in Sources */,
 				ABD7413A13388D3400899EE2 /* UIAlertView+MKBlockAdditions.m in Sources */,
+				AB171ABE133CE804006867EB /* NSObject+MKBlockAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

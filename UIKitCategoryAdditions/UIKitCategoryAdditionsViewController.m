@@ -9,6 +9,7 @@
 #import "UIKitCategoryAdditionsViewController.h"
 #import "UIAlertView+MKBlockAdditions.h"
 #import "UIActionSheet+MKBlockAdditions.h"
+#import "NSObject+MKBlockAdditions.h"
 
 @implementation UIKitCategoryAdditionsViewController
 
@@ -25,6 +26,14 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+-(IBAction) blockCallTapped:(id) sender
+{
+    [self performBlock:^
+     {
+         NSLog(@"hi there!");  
+     }
+     ];
+}
 
 -(IBAction) alertTapped:(id) sender
 {
