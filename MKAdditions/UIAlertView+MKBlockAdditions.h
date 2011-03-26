@@ -13,18 +13,18 @@
     
 }
 
-+ (void) alertViewWithTitle:(NSString*) title 
-                    message:(NSString*) message;
++ (UIAlertView*) alertViewWithTitle:(NSString*) title 
+                            message:(NSString*) message;
 
-+ (void) alertViewWithTitle:(NSString*) title 
-                    message:(NSString*) message
-          cancelButtonTitle:(NSString*) cancelButtonTitle;
++ (UIAlertView*) alertViewWithTitle:(NSString*) title 
+                            message:(NSString*) message
+                  cancelButtonTitle:(NSString*) cancelButtonTitle;
 
-+ (void) alertViewWithTitle:(NSString*) title                    
-                    message:(NSString*) message 
-          cancelButtonTitle:(NSString*) cancelButtonTitle
-          otherButtonTitles:(NSArray*) otherButtons
-                  onDismiss:(DismissBlock) dismissed                   
-                   onCancel:(CancelBlock) cancelled;
++ (UIAlertView*) alertViewWithTitle:(NSString*) title                    
+                            message:(NSString*) message 
+                  cancelButtonTitle:(NSString*) cancelButtonTitle
+                  otherButtonTitles:(NSArray*) otherButtons
+                          onDismiss:(DismissBlock) dismissed                   
+                           onCancel:(CancelBlock) cancelled;
 
 @end

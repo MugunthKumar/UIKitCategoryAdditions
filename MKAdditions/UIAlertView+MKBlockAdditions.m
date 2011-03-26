@@ -13,13 +13,12 @@ static CancelBlock _cancelBlock;
 
 @implementation UIAlertView (Block)
 
-+ (void) alertViewWithTitle:(NSString*) title                    
++ (UIAlertView*) alertViewWithTitle:(NSString*) title                    
                     message:(NSString*) message 
           cancelButtonTitle:(NSString*) cancelButtonTitle
           otherButtonTitles:(NSArray*) otherButtons
                   onDismiss:(DismissBlock) dismissed                   
-                   onCancel:(CancelBlock) cancelled
-{
+                   onCancel:(CancelBlock) cancelled {
     
     [_cancelBlock release];
     _cancelBlock  = [cancelled copy];
@@ -37,33 +36,32 @@ static CancelBlock _cancelBlock;
         [alert addButtonWithTitle:buttonTitle];
     
     [alert show];
-    [alert release];
+    return [alert autorelease];
 }
 
-+ (void) alertViewWithTitle:(NSString*) title 
-                    message:(NSString*) message
-{
-    [UIAlertView alertViewWithTitle:title 
-                            message:message 
-                  cancelButtonTitle:NSLocalizedString(@"Dismiss", @"")];
++ (UIAlertView*) alertViewWithTitle:(NSString*) title 
+                    message:(NSString*) message {
+    
+    return [UIAlertView alertViewWithTitle:title 
+                                   message:message 
+                         cancelButtonTitle:NSLocalizedString(@"Dismiss", @"")];
 }
 
-+ (void) alertViewWithTitle:(NSString*) title 
++ (UIAlertView*) alertViewWithTitle:(NSString*) title 
                     message:(NSString*) message
-          cancelButtonTitle:(NSString*) cancelButtonTitle
-{
+          cancelButtonTitle:(NSString*) cancelButtonTitle {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
                                                     message:message
                                                    delegate:nil
                                           cancelButtonTitle:cancelButtonTitle
                                           otherButtonTitles: nil];
     [alert show];
-    [alert release];
+    return [alert autorelease];
 }
 
 
-+ (void)alertView:(UIAlertView*) alertView didDismissWithButtonIndex:(NSInteger) buttonIndex
-{
++ (void)alertView:(UIAlertView*) alertView didDismissWithButtonIndex:(NSInteger) buttonIndex {
+    
 	if(buttonIndex == [alertView cancelButtonIndex])
 	{
 		_cancelBlock();
@@ -73,4 +71,5 @@ static CancelBlock _cancelBlock;
         _dismissBlock(buttonIndex - 1); // cancel button is button 0
     }
 }
+
 @end
