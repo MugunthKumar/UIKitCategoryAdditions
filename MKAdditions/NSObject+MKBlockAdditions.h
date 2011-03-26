@@ -14,5 +14,6 @@
 }
 
 - (void) performBlock:(VoidBlock) block;
+- (void) performBlock:(VoidBlock) block afterDelay:(NSTimeInterval) delay;
 
 @end

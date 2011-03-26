@@ -20,6 +20,14 @@ static VoidBlock _block;
     [self performSelector:@selector(callBlock)];
 }
 
+- (void) performBlock:(VoidBlock) aBlock afterDelay:(NSTimeInterval) delay
+{
+    [_block release];     
+    _block = [aBlock copy];
+
+    [self performSelector:@selector(callBlock) withObject:nil afterDelay:delay];
+}
+
 -(void) callBlock
 {
     _block();
