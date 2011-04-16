@@ -9,9 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MKBlockAdditions.h"
 
-@interface NSObject (MKBlockAdditions) {
-    
-}
+@interface NSObject (MKBlockAdditions)
 
 - (void) performBlock:(VoidBlock) block;
 - (void) performBlock:(VoidBlock) block afterDelay:(NSTimeInterval) delay;
