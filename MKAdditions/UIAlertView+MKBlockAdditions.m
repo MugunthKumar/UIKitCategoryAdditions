@@ -20,10 +20,13 @@ static CancelBlock _cancelBlock;
                   onDismiss:(DismissBlock) dismissed                   
                    onCancel:(CancelBlock) cancelled {
     
-    [_cancelBlock release];
-    _cancelBlock  = [cancelled copy];
+#if __has_feature(objc_arc)
 
+#else
+    [_cancelBlock release];
     [_dismissBlock release];
+#endif
+    _cancelBlock  = [cancelled copy];
     _dismissBlock  = [dismissed copy];
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
@@ -36,7 +39,11 @@ static CancelBlock _cancelBlock;
         [alert addButtonWithTitle:buttonTitle];
     
     [alert show];
+#if __has_feature(objc_arc)
+    return alert;
+#else    
     return [alert autorelease];
+#endif
 }
 
 + (UIAlertView*) alertViewWithTitle:(NSString*) title 
@@ -56,7 +63,12 @@ static CancelBlock _cancelBlock;
                                           cancelButtonTitle:cancelButtonTitle
                                           otherButtonTitles: nil];
     [alert show];
+#if __has_feature(objc_arc)
+    return alert;
+#else
     return [alert autorelease];
+#endif
+    
 }
 
 
