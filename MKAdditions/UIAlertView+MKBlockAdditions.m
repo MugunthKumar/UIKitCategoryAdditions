@@ -70,6 +70,11 @@ static CancelBlock _cancelBlock;
     {
         _dismissBlock(buttonIndex - 1); // cancel button is button 0
     }
+    
+    [_cancelBlock release];
+    _cancelBlock = nil;
+    [_dismissBlock release];
+    _dismissBlock = nil;
 }
 
 @end
