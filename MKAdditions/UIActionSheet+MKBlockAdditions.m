@@ -141,14 +141,16 @@ static UIViewController *_presentVC;
     [_presentVC dismissModalViewControllerAnimated:YES];    
 	[picker autorelease];
     [_presentVC release];
-    _cancelBlock();
+	if (_cancelBlock)
+		_cancelBlock();
 }
 
 +(void)actionSheet:(UIActionSheet*) actionSheet didDismissWithButtonIndex:(NSInteger) buttonIndex
 {
 	if(buttonIndex == [actionSheet cancelButtonIndex])
 	{
-		_cancelBlock();
+		if (_cancelBlock)
+			_cancelBlock();
 	}
     else
     {
@@ -179,7 +181,7 @@ static UIViewController *_presentVC;
             
             [_presentVC presentModalViewController:picker animated:YES];
         }
-        else
+        else if (_dismissBlock)
         {
             _dismissBlock(buttonIndex);
         }
