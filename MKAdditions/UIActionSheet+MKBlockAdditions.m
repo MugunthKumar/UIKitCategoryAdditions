@@ -16,14 +16,12 @@ static UIViewController *_presentVC;
 @implementation UIActionSheet (MKBlockAdditions)
 
 +(void) actionSheetWithTitle:(NSString*) title
-                     message:(NSString*) message
                      buttons:(NSArray*) buttonTitles
                   showInView:(UIView*) view
                    onDismiss:(DismissBlock) dismissed                   
                     onCancel:(CancelBlock) cancelled
 {    
     [UIActionSheet actionSheetWithTitle:title 
-                                message:message 
                  destructiveButtonTitle:nil 
                                 buttons:buttonTitles 
                              showInView:view 
@@ -32,7 +30,6 @@ static UIViewController *_presentVC;
 }
 
 + (void) actionSheetWithTitle:(NSString*) title                     
-                      message:(NSString*) message          
        destructiveButtonTitle:(NSString*) destructiveButtonTitle
                       buttons:(NSArray*) buttonTitles
                    showInView:(UIView*) view
