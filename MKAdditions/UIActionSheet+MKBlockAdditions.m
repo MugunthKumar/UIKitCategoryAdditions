@@ -46,7 +46,7 @@ static UIViewController *_presentVC;
     _dismissBlock  = [dismissed copy];
 
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:title 
-                                                             delegate:[self class] 
+                                                             delegate:(id <UIActionSheetDelegate>)[self class] 
                                                     cancelButtonTitle:nil
                                                destructiveButtonTitle:destructiveButtonTitle 
                                                     otherButtonTitles:nil];
@@ -91,7 +91,7 @@ static UIViewController *_presentVC;
     int cancelButtonIndex = -1;
 
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:title 
-                                                             delegate:[self class] 
+                                                             delegate:(id <UIActionSheetDelegate>)[self class] 
 													cancelButtonTitle:nil
 											   destructiveButtonTitle:nil
 													otherButtonTitles:nil];
@@ -168,7 +168,7 @@ static UIViewController *_presentVC;
             
             
             UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-            picker.delegate = [self class];
+            picker.delegate = (id <UIImagePickerControllerDelegate, UINavigationControllerDelegate>)[self class];
             picker.allowsEditing = YES;
             
             if(buttonIndex == 1) 
