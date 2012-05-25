@@ -24,4 +24,7 @@
                           onDismiss:(DismissBlock) dismissed                   
                            onCancel:(CancelBlock) cancelled;
 
+@property (nonatomic, copy) DismissBlock dismissBlock;
+@property (nonatomic, copy) CancelBlock cancelBlock;
+
 @end
