@@ -58,7 +58,11 @@ static char CANCEL_IDENTIFER;
         [alert addButtonWithTitle:buttonTitle];
     
     [alert show];
+#if __has_feature(objc_arc)
+    return alert;
+#else
     return [alert autorelease];
+#endif
 }
 
 + (UIAlertView*) alertViewWithTitle:(NSString*) title 
@@ -78,7 +82,11 @@ static char CANCEL_IDENTIFER;
                                           cancelButtonTitle:cancelButtonTitle
                                           otherButtonTitles: nil];
     [alert show];
+#if __has_feature(objc_arc)
+    return alert;
+#else
     return [alert autorelease];
+#endif
 }
 
 
@@ -96,9 +104,12 @@ static char CANCEL_IDENTIFER;
             alertView.dismissBlock(buttonIndex - 1); // cancel button is button 0
         }
     }
+
+#if ! __has_feature(objc_arc)
     [alertView.cancelBlock release];
-    alertView.cancelBlock = nil;
     [alertView.dismissBlock release];
+#endif
+    alertView.cancelBlock = nil;
     alertView.dismissBlock = nil;
 }
 

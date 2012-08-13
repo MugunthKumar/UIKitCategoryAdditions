@@ -39,11 +39,16 @@ static UIViewController *_presentVC;
                     onDismiss:(DismissBlock) dismissed                   
                      onCancel:(CancelBlock) cancelled
 {
+#if __has_feature(objc_arc)
+    _cancelBlock = cancelled;
+    _dismissBlock = dismissed;
+#else
     [_cancelBlock release];
     _cancelBlock  = [cancelled copy];
     
     [_dismissBlock release];
     _dismissBlock  = [dismissed copy];
+#endif
 
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:title 
                                                              delegate:(id <UIActionSheetDelegate>)[self class] 
@@ -69,8 +74,9 @@ static UIViewController *_presentVC;
     if([view isKindOfClass:[UIBarButtonItem class]])
         [actionSheet showFromBarButtonItem:(UIBarButtonItem*) view animated:YES];
     
+#if ! __has_feature(objc_arc)
     [actionSheet release];
-    
+#endif
 }
 
 + (void) photoPickerWithTitle:(NSString*) title
@@ -79,6 +85,11 @@ static UIViewController *_presentVC;
                 onPhotoPicked:(PhotoPickedBlock) photoPicked                   
                      onCancel:(CancelBlock) cancelled
 {
+#if __has_feature(objc_arc)
+    _cancelBlock = cancelled;
+    _photoPickedBlock = photoPicked;
+    _presentVC = presentVC;
+#else
     [_cancelBlock release];
     _cancelBlock  = [cancelled copy];
     
@@ -87,6 +98,7 @@ static UIViewController *_presentVC;
     
     [_presentVC release];
     _presentVC = [presentVC retain];
+#endif
     
     int cancelButtonIndex = -1;
 
@@ -122,7 +134,9 @@ static UIViewController *_presentVC;
     if([view isKindOfClass:[UIBarButtonItem class]])
         [actionSheet showFromBarButtonItem:(UIBarButtonItem*) view animated:YES];
     
+#if ! __has_feature(objc_arc)
     [actionSheet release];    
+#endif
 }
 
 
@@ -133,17 +147,21 @@ static UIViewController *_presentVC;
         editedImage = (UIImage*) [info valueForKey:UIImagePickerControllerOriginalImage];
     
     _photoPickedBlock(editedImage);
-	[picker dismissModalViewControllerAnimated:YES];	
-	[picker autorelease];
+    [picker dismissModalViewControllerAnimated:YES];
+#if ! __has_feature(objc_arc)
+    [picker autorelease];
+#endif
 }
 
 
 + (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     // Dismiss the image selection and close the program
-    [_presentVC dismissModalViewControllerAnimated:YES];    
-	[picker autorelease];
+    [_presentVC dismissModalViewControllerAnimated:YES];
+#if ! __has_feature(objc_arc)
+    [picker autorelease];
     [_presentVC release];
+#endif
     _cancelBlock();
 }
 
