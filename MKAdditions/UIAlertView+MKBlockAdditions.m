@@ -58,7 +58,7 @@ static char CANCEL_IDENTIFER;
         [alert addButtonWithTitle:buttonTitle];
     
     [alert show];
-    return [alert autorelease];
+    return alert;
 }
 
 + (UIAlertView*) alertViewWithTitle:(NSString*) title 
@@ -78,7 +78,7 @@ static char CANCEL_IDENTIFER;
                                           cancelButtonTitle:cancelButtonTitle
                                           otherButtonTitles: nil];
     [alert show];
-    return [alert autorelease];
+    return alert;
 }
 
 
