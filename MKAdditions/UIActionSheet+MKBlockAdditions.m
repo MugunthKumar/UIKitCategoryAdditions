@@ -123,14 +123,14 @@ static UIViewController *_presentVC;
         editedImage = (UIImage*) [info valueForKey:UIImagePickerControllerOriginalImage];
     
     _photoPickedBlock(editedImage);
-	[picker dismissModalViewControllerAnimated:YES];	
+	[picker dismissViewControllerAnimated:YES completion:NULL];	
 }
 
 
 + (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     // Dismiss the image selection and close the program
-    [_presentVC dismissModalViewControllerAnimated:YES];    
+    [_presentVC dismissViewControllerAnimated:YES completion:NULL];    
     _cancelBlock();
 }
 
@@ -167,7 +167,7 @@ static UIViewController *_presentVC;
                 picker.sourceType = UIImagePickerControllerSourceTypeCamera;;
             }
             
-            [_presentVC presentModalViewController:picker animated:YES];
+            [_presentVC dismissViewControllerAnimated:YES completion:NULL];
         }
         else
         {
