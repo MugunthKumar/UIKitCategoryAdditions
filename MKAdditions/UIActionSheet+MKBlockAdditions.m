@@ -31,6 +31,24 @@ static UIViewController *_presentVC;
                                onCancel:cancelled];
 }
 
++ (void) actionSheetWithTitle:(NSString *)title
+                      message:(NSString *)message
+                      buttons:(NSArray *)buttonTitles
+                   showInView:(UIView *)view
+                     fromRect:(CGRect)rect
+                    onDismiss:(DismissBlock)dismissed
+                     onCancel:(CancelBlock)cancelled
+{    
+    [UIActionSheet actionSheetWithTitle:title
+                                message:message
+                 destructiveButtonTitle:nil
+                                buttons:buttonTitles
+                             showInView:view
+                               fromRect:rect
+                              onDismiss:dismissed
+                               onCancel:cancelled];
+}
+
 + (void) actionSheetWithTitle:(NSString*) title                     
                       message:(NSString*) message          
        destructiveButtonTitle:(NSString*) destructiveButtonTitle
@@ -60,6 +78,44 @@ static UIViewController *_presentVC;
     
     if([view isKindOfClass:[UIView class]])
         [actionSheet showInView:view];
+    
+    if([view isKindOfClass:[UITabBar class]])
+        [actionSheet showFromTabBar:(UITabBar*) view];
+    
+    if([view isKindOfClass:[UIBarButtonItem class]])
+        [actionSheet showFromBarButtonItem:(UIBarButtonItem*) view animated:YES];
+}
+
++ (void)actionSheetWithTitle:(NSString *)title
+                     message:(NSString *)message
+      destructiveButtonTitle:(NSString *)destructiveButtonTitle
+                     buttons:(NSArray *)buttonTitles
+                  showInView:(UIView *)view
+                    fromRect:(CGRect)rect
+                   onDismiss:(DismissBlock)dismissed
+                    onCancel:(CancelBlock)cancelled
+{
+    _cancelBlock  = [cancelled copy];
+    
+    
+    _dismissBlock  = [dismissed copy];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:title
+                                                             delegate:(id<UIActionSheetDelegate>)[self class]
+                                                    cancelButtonTitle:nil
+                                               destructiveButtonTitle:destructiveButtonTitle
+                                                    otherButtonTitles:nil];
+    
+    for(NSString* thisButtonTitle in buttonTitles)
+        [actionSheet addButtonWithTitle:thisButtonTitle];
+    
+    [actionSheet addButtonWithTitle:NSLocalizedString(@"Cancel", @"")];
+    actionSheet.cancelButtonIndex = [buttonTitles count];
+    
+    if(destructiveButtonTitle)
+        actionSheet.cancelButtonIndex ++;
+    
+    if([view isKindOfClass:[UIView class]])
+        [actionSheet showFromRect:rect inView:view animated:YES];
     
     if([view isKindOfClass:[UITabBar class]])
         [actionSheet showFromTabBar:(UITabBar*) view];
