@@ -15,6 +15,43 @@ static UIViewController *_presentVC;
 
 @implementation UIActionSheet (MKBlockAdditions)
 
++(void) actionSheetWithTitle:(NSString *)title
+                     destructiveButtonTitle:(NSString *)destructiveButtonTitle
+                     buttons:(NSArray *)buttonTitles
+                    fromRect:(CGRect)rect
+                  showInView:(UIView *)view
+                   onDismiss:(DismissBlock)dismissed
+                    onCancel:(CancelBlock)cancelled
+                    animated:(BOOL)animated
+{
+#if !__has_feature(objc_arc)
+    [_cancelBlock release];
+    [_dismissBlock release];
+#endif
+    _cancelBlock  = [cancelled copy];
+    _dismissBlock  = [dismissed copy];
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:title
+                                                             delegate:(id<UIActionSheetDelegate>)[self class]
+                                                    cancelButtonTitle:nil
+                                               destructiveButtonTitle:destructiveButtonTitle
+                                                    otherButtonTitles:nil];
+    
+    for(NSString* thisButtonTitle in buttonTitles)
+        [actionSheet addButtonWithTitle:thisButtonTitle];
+    
+    [actionSheet addButtonWithTitle:NSLocalizedString(@"Cancel", @"")];
+    actionSheet.cancelButtonIndex = [buttonTitles count];
+    
+    if(destructiveButtonTitle)
+        actionSheet.cancelButtonIndex ++;
+    
+    [actionSheet showFromRect:rect inView:view animated:animated];
+#if !__has_feature(objc_arc)
+    [actionSheet release];
+#endif
+}
+
 +(void) actionSheetWithTitle:(NSString*) title
                      message:(NSString*) message
                      buttons:(NSArray*) buttonTitles
@@ -73,7 +110,6 @@ static UIViewController *_presentVC;
 #if !__has_feature(objc_arc)
     [actionSheet release];
 #endif
-    
 }
 
 + (void) photoPickerWithTitle:(NSString*) title
