@@ -14,7 +14,9 @@ static VoidBlock _block;
 
 - (void) performBlock:(VoidBlock) aBlock
 {
-    [_block release];     
+#if !__has_feature(objc_arc)
+    [_block release];
+#endif
     _block = [aBlock copy];
     
     [self performSelector:@selector(callBlock)];
@@ -22,7 +24,9 @@ static VoidBlock _block;
 
 - (void) performBlock:(VoidBlock) aBlock afterDelay:(NSTimeInterval) delay
 {
-    [_block release];     
+#if !__has_feature(objc_arc)
+    [_block release];
+#endif
     _block = [aBlock copy];
 
     [self performSelector:@selector(callBlock) withObject:nil afterDelay:delay];
@@ -31,7 +35,9 @@ static VoidBlock _block;
 -(void) callBlock
 {
     _block();
+#if !__has_feature(objc_arc)
     [_block release];
+#endif
     _block = nil;
 }
 

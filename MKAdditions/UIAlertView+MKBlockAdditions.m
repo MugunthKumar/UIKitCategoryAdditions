@@ -58,10 +58,14 @@ static char CANCEL_IDENTIFER;
         [alert addButtonWithTitle:buttonTitle];
     
     [alert show];
+#if !__has_feature(objc_arc)
     return [alert autorelease];
+#else
+    return alert;
+#endif
 }
 
-+ (UIAlertView*) alertViewWithTitle:(NSString*) title 
++ (UIAlertView*) alertViewWithTitle:(NSString*) title
                     message:(NSString*) message {
     
     return [UIAlertView alertViewWithTitle:title 
@@ -78,7 +82,11 @@ static char CANCEL_IDENTIFER;
                                           cancelButtonTitle:cancelButtonTitle
                                           otherButtonTitles: nil];
     [alert show];
+#if !__has_feature(objc_arc)
     return [alert autorelease];
+#else
+    return alert;
+#endif
 }
 
 

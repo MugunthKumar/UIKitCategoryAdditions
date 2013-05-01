@@ -39,14 +39,15 @@ static UIViewController *_presentVC;
                     onDismiss:(DismissBlock) dismissed                   
                      onCancel:(CancelBlock) cancelled
 {
+#if !__has_feature(objc_arc)
     [_cancelBlock release];
-    _cancelBlock  = [cancelled copy];
-    
     [_dismissBlock release];
+#endif
+    _cancelBlock  = [cancelled copy];
     _dismissBlock  = [dismissed copy];
 
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:title 
-                                                             delegate:[self class] 
+                                                             delegate:(id<UIActionSheetDelegate>)[self class]
                                                     cancelButtonTitle:nil
                                                destructiveButtonTitle:destructiveButtonTitle 
                                                     otherButtonTitles:nil];
@@ -69,7 +70,9 @@ static UIViewController *_presentVC;
     if([view isKindOfClass:[UIBarButtonItem class]])
         [actionSheet showFromBarButtonItem:(UIBarButtonItem*) view animated:YES];
     
+#if !__has_feature(objc_arc)
     [actionSheet release];
+#endif
     
 }
 
@@ -79,19 +82,24 @@ static UIViewController *_presentVC;
                 onPhotoPicked:(PhotoPickedBlock) photoPicked                   
                      onCancel:(CancelBlock) cancelled
 {
+#if !__has_feature(objc_arc)
     [_cancelBlock release];
-    _cancelBlock  = [cancelled copy];
-    
     [_photoPickedBlock release];
+    [_presentVC release];
+#endif
+    _cancelBlock  = [cancelled copy];
     _photoPickedBlock  = [photoPicked copy];
     
-    [_presentVC release];
+#if !__has_feature(objc_arc)
     _presentVC = [presentVC retain];
+#else
+    _presentVC = presentVC;
+#endif
     
     int cancelButtonIndex = -1;
 
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:title 
-                                                             delegate:[self class] 
+                                                             delegate:(id<UIActionSheetDelegate>)[self class]
 													cancelButtonTitle:nil
 											   destructiveButtonTitle:nil
 													otherButtonTitles:nil];
@@ -121,8 +129,9 @@ static UIViewController *_presentVC;
     
     if([view isKindOfClass:[UIBarButtonItem class]])
         [actionSheet showFromBarButtonItem:(UIBarButtonItem*) view animated:YES];
-    
-    [actionSheet release];    
+#if !__has_feature(objc_arc)
+    [actionSheet release];
+#endif
 }
 
 
@@ -134,16 +143,20 @@ static UIViewController *_presentVC;
     
     _photoPickedBlock(editedImage);
 	[picker dismissModalViewControllerAnimated:YES];	
-	[picker autorelease];
+#if !__has_feature(objc_arc)
+    [picker autorelease];
+#endif
 }
 
 
 + (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     // Dismiss the image selection and close the program
-    [_presentVC dismissModalViewControllerAnimated:YES];    
+    [_presentVC dismissModalViewControllerAnimated:YES];
+#if !__has_feature(objc_arc)
 	[picker autorelease];
     [_presentVC release];
+#endif
     _cancelBlock();
 }
 
@@ -168,7 +181,7 @@ static UIViewController *_presentVC;
             
             
             UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-            picker.delegate = [self class];
+            picker.delegate = (id<UINavigationControllerDelegate,UIImagePickerControllerDelegate>)[self class];
             picker.allowsEditing = YES;
             
             if(buttonIndex == 1) 
