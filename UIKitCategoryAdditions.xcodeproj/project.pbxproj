@@ -143,6 +143,8 @@
 /* Begin PBXProject section */
 		AB5E75411336DD790016813D /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = AB5E75441336DD790016813D /* Build configuration list for PBXProject "UIKitCategoryAdditions" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -257,7 +259,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UIKitCategoryAdditions/UIKitCategoryAdditions-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "UIKitCategoryAdditions/UIKitCategoryAdditions-Info.plist";
 				PRODUCT_NAME = UIKitCategoryAdditions;
 				WRAPPER_EXTENSION = app;
@@ -271,7 +273,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UIKitCategoryAdditions/UIKitCategoryAdditions-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "UIKitCategoryAdditions/UIKitCategoryAdditions-Info.plist";
 				PRODUCT_NAME = UIKitCategoryAdditions;
 				VALIDATE_PRODUCT = YES;
