@@ -16,14 +16,12 @@ static UIViewController *_presentVC;
 @implementation UIActionSheet (MKBlockAdditions)
 
 +(void) actionSheetWithTitle:(NSString*) title
-                     message:(NSString*) message
                      buttons:(NSArray*) buttonTitles
                   showInView:(UIView*) view
                    onDismiss:(DismissBlock) dismissed                   
                     onCancel:(CancelBlock) cancelled
 {    
     [UIActionSheet actionSheetWithTitle:title 
-                                message:message 
                  destructiveButtonTitle:nil 
                                 buttons:buttonTitles 
                              showInView:view 
@@ -32,7 +30,6 @@ static UIViewController *_presentVC;
 }
 
 + (void) actionSheetWithTitle:(NSString*) title                     
-                      message:(NSString*) message          
        destructiveButtonTitle:(NSString*) destructiveButtonTitle
                       buttons:(NSArray*) buttonTitles
                    showInView:(UIView*) view
@@ -46,7 +43,7 @@ static UIViewController *_presentVC;
     _dismissBlock  = [dismissed copy];
 
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:title 
-                                                             delegate:[self class] 
+                                                             delegate:(id<UIActionSheetDelegate>)[self class] 
                                                     cancelButtonTitle:nil
                                                destructiveButtonTitle:destructiveButtonTitle 
                                                     otherButtonTitles:nil];
@@ -91,7 +88,7 @@ static UIViewController *_presentVC;
     int cancelButtonIndex = -1;
 
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:title 
-                                                             delegate:[self class] 
+                                                             delegate:(id<UIActionSheetDelegate>)[self class] 
 													cancelButtonTitle:nil
 											   destructiveButtonTitle:nil
 													otherButtonTitles:nil];
@@ -144,14 +141,16 @@ static UIViewController *_presentVC;
     [_presentVC dismissModalViewControllerAnimated:YES];    
 	[picker autorelease];
     [_presentVC release];
-    _cancelBlock();
+	if (_cancelBlock)
+		_cancelBlock();
 }
 
 +(void)actionSheet:(UIActionSheet*) actionSheet didDismissWithButtonIndex:(NSInteger) buttonIndex
 {
 	if(buttonIndex == [actionSheet cancelButtonIndex])
 	{
-		_cancelBlock();
+		if (_cancelBlock)
+			_cancelBlock();
 	}
     else
     {
@@ -168,7 +167,7 @@ static UIViewController *_presentVC;
             
             
             UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-            picker.delegate = [self class];
+            picker.delegate = (id<UINavigationControllerDelegate, UIImagePickerControllerDelegate>)[self class];
             picker.allowsEditing = YES;
             
             if(buttonIndex == 1) 
@@ -182,7 +181,7 @@ static UIViewController *_presentVC;
             
             [_presentVC presentModalViewController:picker animated:YES];
         }
-        else
+        else if (_dismissBlock)
         {
             _dismissBlock(buttonIndex);
         }
