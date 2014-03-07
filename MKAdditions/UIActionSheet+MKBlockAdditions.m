@@ -24,6 +24,31 @@ static UIViewController *_presentVC;
                     onCancel:(CancelBlock)cancelled
                     animated:(BOOL)animated
 {
+    [UIActionSheet actionSheetWithTitle:title
+                             titleColor:nil
+                      titleUseLargeFont:NO
+                 destructiveButtonTitle:destructiveButtonTitle
+                                buttons:buttonTitles
+                           buttonsColor:nil
+                               fromRect:rect
+                             showInView:view
+                              onDismiss:dismissed
+                               onCancel:cancelled
+                               animated:animated];
+}
+
++(void) actionSheetWithTitle:(NSString*) title
+                  titleColor:(UIColor *)titleColor
+           titleUseLargeFont:(BOOL)largeTitle
+      destructiveButtonTitle:(NSString *)destructiveButtonTitle
+                     buttons:(NSArray *)buttonTitles
+                buttonsColor:(UIColor *)buttonColor
+                    fromRect:(CGRect)rect
+                  showInView:(UIView *)view
+                   onDismiss:(DismissBlock)dismissed
+                    onCancel:(CancelBlock)cancelled
+                    animated:(BOOL)animated
+{
 #if !__has_feature(objc_arc)
     [_cancelBlock release];
     [_dismissBlock release];
@@ -46,7 +71,16 @@ static UIViewController *_presentVC;
     if(destructiveButtonTitle)
         actionSheet.cancelButtonIndex ++;
     
+    if (buttonColor) {
+        [actionSheet setButtonTitleColor:buttonColor];
+    }
+    
     [actionSheet showFromRect:rect inView:view animated:animated];
+    
+    if (titleColor) {
+        [actionSheet setTitleColor:titleColor];
+    }
+    [actionSheet setLargeTitle:largeTitle];
 #if !__has_feature(objc_arc)
     [actionSheet release];
 #endif
@@ -237,4 +271,37 @@ static UIViewController *_presentVC;
         }
     }
 }
+
+- (void)setButtonTitleColor:(UIColor *)color
+{
+    for (id view in self.subviews) {
+        if ([view isKindOfClass:[UIButton class]]) {
+            [view setTitleColor:color forState:UIControlStateNormal];
+            [view setTitleColor:color forState:UIControlStateHighlighted];
+            [view setTitleColor:color forState:UIControlStateSelected];
+        }
+    }
+}
+
+- (void)setTitleColor:(UIColor *)color
+{
+    UILabel *label = [self valueForKey:@"_titleLabel"];
+    if (label) {
+        if (color)
+            [label setTextColor:color];
+    }
+}
+
+- (void)setLargeTitle:(BOOL)largeTitle
+{
+    if (largeTitle) {
+        UILabel *label = [self valueForKey:@"_titleLabel"];
+        if (label) {
+            UIFont *font = [UIFont boldSystemFontOfSize:17];
+            [label setFont:font];
+            [label setFrame:CGRectMake(0, label.frame.origin.y, self.frame.size.width, 34)];
+        }
+    }
+}
+
 @end

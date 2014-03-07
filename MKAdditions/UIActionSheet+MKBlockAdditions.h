@@ -20,6 +20,18 @@
                     animated:(BOOL) animated;
 
 +(void) actionSheetWithTitle:(NSString*) title
+                  titleColor:(UIColor*) titleColor
+           titleUseLargeFont:(BOOL) largeTitle
+      destructiveButtonTitle:(NSString*) destructiveButtonTitle
+                     buttons:(NSArray *) buttonTitles
+                buttonsColor:(UIColor*) buttonColor
+                    fromRect:(CGRect) rect
+                  showInView:(UIView*) view
+                   onDismiss:(DismissBlock) dismissed
+                    onCancel:(CancelBlock) cancelled
+                    animated:(BOOL) animated;
+
++(void) actionSheetWithTitle:(NSString*) title
                      message:(NSString*) message
                      buttons:(NSArray*) buttonTitles
                   showInView:(UIView*) view
