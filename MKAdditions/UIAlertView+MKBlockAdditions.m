@@ -11,16 +11,19 @@
 
 static char DISMISS_IDENTIFER;
 static char CANCEL_IDENTIFER;
+static char TEXTFIELD_IDENTIFIER;
 
 @implementation UIAlertView (Block)
 
 @dynamic cancelBlock;
 @dynamic dismissBlock;
+@dynamic textFieldDismissBlock;
 
 - (void)setDismissBlock:(DismissBlock)dismissBlock
 {
     objc_setAssociatedObject(self, &DISMISS_IDENTIFER, dismissBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
+
 
 - (DismissBlock)dismissBlock
 {
@@ -37,22 +40,79 @@ static char CANCEL_IDENTIFER;
     return objc_getAssociatedObject(self, &CANCEL_IDENTIFER);
 }
 
+- (void)setTextFieldDismissBlock:(TextFieldDismissBlock)textFieldDismissBlock
+{
+    objc_setAssociatedObject(self, &TEXTFIELD_IDENTIFIER, textFieldDismissBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
 
-+ (UIAlertView*) alertViewWithTitle:(NSString*) title                    
+- (TextFieldDismissBlock)textFieldDismissBlock
+{
+    return objc_getAssociatedObject(self, &TEXTFIELD_IDENTIFIER);
+}
+
++ (UIAlertView*) alertViewWithTitle:(NSString*) title
                     message:(NSString*) message 
           cancelButtonTitle:(NSString*) cancelButtonTitle
           otherButtonTitles:(NSArray*) otherButtons
                   onDismiss:(DismissBlock) dismissed                   
                    onCancel:(CancelBlock) cancelled {
         
+    UIAlertView *alert = [[UIAlertView alloc] showAlertViewWithTitle:title
+                                                             message:message
+                                                   cancelButtonTitle:cancelButtonTitle
+                                                   otherButtonTitles:otherButtons
+                                                        dismissBlock:dismissed
+                                               textFieldDismissBlock:nil
+                                                         cancelBlock:cancelled];
+#if !__has_feature(objc_arc)
+    return [alert autorelease];
+#else
+    return alert;
+#endif
+}
+
++ (UIAlertView*) alertViewWithTitle:(NSString *)title
+                            message:(NSString *)message
+                  cancelButtonTitle:(NSString *)cancelButtonTitle
+                  otherButtonTitles:(NSArray *)otherButtons
+                 onTextFieldDismiss:(TextFieldDismissBlock)dismissed
+                           onCancel:(CancelBlock)cancelled
+{
+    UIAlertView *alert = [[UIAlertView alloc] showAlertViewWithTitle:title
+                                                             message:message
+                                                   cancelButtonTitle:cancelButtonTitle
+                                                   otherButtonTitles:otherButtons
+                                                        dismissBlock:nil
+                                               textFieldDismissBlock:dismissed
+                                                         cancelBlock:cancelled];
+#if !__has_feature(objc_arc)
+    return [alert autorelease];
+#else
+    return alert;
+#endif
+}
+
+- (UIAlertView*)showAlertViewWithTitle:(NSString*)title
+                               message:(NSString*)message
+                     cancelButtonTitle:(NSString*)cancelButtonTitle
+                     otherButtonTitles:(NSArray*)otherButtons
+                          dismissBlock:(DismissBlock)dismiss
+                        textFieldDismissBlock:(TextFieldDismissBlock)textFieldDismiss
+                                  cancelBlock:(CancelBlock)cancel
+{
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
                                                     message:message
                                                    delegate:[self class]
                                           cancelButtonTitle:cancelButtonTitle
                                           otherButtonTitles:nil];
     
-    [alert setDismissBlock:dismissed];
-    [alert setCancelBlock:cancelled];
+    [alert setCancelBlock:cancel];
+    if (dismiss)
+        [alert setDismissBlock:dismiss];
+    if (textFieldDismiss) {
+        [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+        [alert setTextFieldDismissBlock:textFieldDismiss];
+    }
     
     for(NSString *buttonTitle in otherButtons)
         [alert addButtonWithTitle:buttonTitle];
@@ -98,6 +158,11 @@ static char CANCEL_IDENTIFER;
             alertView.cancelBlock();
         }
 	}
+    else if (alertView.alertViewStyle==UIAlertViewStylePlainTextInput) {
+        if (alertView.textFieldDismissBlock) {
+            alertView.textFieldDismissBlock(buttonIndex - 1, [alertView textFieldAtIndex:0]);
+        }
+    }
     else
     {
         if (alertView.dismissBlock) {
