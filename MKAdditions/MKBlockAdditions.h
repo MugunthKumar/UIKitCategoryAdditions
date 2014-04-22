@@ -11,5 +11,6 @@ typedef void (^VoidBlock)();
 typedef void (^DismissBlock)(int buttonIndex);
 typedef void (^CancelBlock)();
 typedef void (^PhotoPickedBlock)(UIImage *chosenImage);
+typedef void (^TextFieldDismissBlock)(int buttonIndex, UITextField *textField);
 
 #define kPhotoActionSheetTag 10000

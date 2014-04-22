@@ -15,6 +15,77 @@ static UIViewController *_presentVC;
 
 @implementation UIActionSheet (MKBlockAdditions)
 
++(void) actionSheetWithTitle:(NSString *)title
+                     destructiveButtonTitle:(NSString *)destructiveButtonTitle
+                     buttons:(NSArray *)buttonTitles
+                    fromRect:(CGRect)rect
+                  showInView:(UIView *)view
+                   onDismiss:(DismissBlock)dismissed
+                    onCancel:(CancelBlock)cancelled
+                    animated:(BOOL)animated
+{
+    [UIActionSheet actionSheetWithTitle:title
+                             titleColor:nil
+                      titleUseLargeFont:NO
+                 destructiveButtonTitle:destructiveButtonTitle
+                                buttons:buttonTitles
+                           buttonsColor:nil
+                               fromRect:rect
+                             showInView:view
+                              onDismiss:dismissed
+                               onCancel:cancelled
+                               animated:animated];
+}
+
++(void) actionSheetWithTitle:(NSString*) title
+                  titleColor:(UIColor *)titleColor
+           titleUseLargeFont:(BOOL)largeTitle
+      destructiveButtonTitle:(NSString *)destructiveButtonTitle
+                     buttons:(NSArray *)buttonTitles
+                buttonsColor:(UIColor *)buttonColor
+                    fromRect:(CGRect)rect
+                  showInView:(UIView *)view
+                   onDismiss:(DismissBlock)dismissed
+                    onCancel:(CancelBlock)cancelled
+                    animated:(BOOL)animated
+{
+#if !__has_feature(objc_arc)
+    [_cancelBlock release];
+    [_dismissBlock release];
+#endif
+    _cancelBlock  = [cancelled copy];
+    _dismissBlock  = [dismissed copy];
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:title
+                                                             delegate:(id<UIActionSheetDelegate>)[self class]
+                                                    cancelButtonTitle:nil
+                                               destructiveButtonTitle:destructiveButtonTitle
+                                                    otherButtonTitles:nil];
+    
+    for(NSString* thisButtonTitle in buttonTitles)
+        [actionSheet addButtonWithTitle:thisButtonTitle];
+    
+    [actionSheet addButtonWithTitle:NSLocalizedString(@"Cancel", @"")];
+    actionSheet.cancelButtonIndex = [buttonTitles count];
+    
+    if(destructiveButtonTitle)
+        actionSheet.cancelButtonIndex ++;
+    
+    if (buttonColor) {
+        [actionSheet setButtonTitleColor:buttonColor];
+    }
+    
+    [actionSheet showFromRect:rect inView:view animated:animated];
+    
+    if (titleColor) {
+        [actionSheet setTitleColor:titleColor];
+    }
+    [actionSheet setLargeTitle:largeTitle];
+#if !__has_feature(objc_arc)
+    [actionSheet release];
+#endif
+}
+
 +(void) actionSheetWithTitle:(NSString*) title
                      message:(NSString*) message
                      buttons:(NSArray*) buttonTitles
@@ -39,14 +110,15 @@ static UIViewController *_presentVC;
                     onDismiss:(DismissBlock) dismissed                   
                      onCancel:(CancelBlock) cancelled
 {
+#if !__has_feature(objc_arc)
     [_cancelBlock release];
-    _cancelBlock  = [cancelled copy];
-    
     [_dismissBlock release];
+#endif
+    _cancelBlock  = [cancelled copy];
     _dismissBlock  = [dismissed copy];
 
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:title 
-                                                             delegate:[self class] 
+                                                             delegate:(id<UIActionSheetDelegate>)[self class]
                                                     cancelButtonTitle:nil
                                                destructiveButtonTitle:destructiveButtonTitle 
                                                     otherButtonTitles:nil];
@@ -69,8 +141,9 @@ static UIViewController *_presentVC;
     if([view isKindOfClass:[UIBarButtonItem class]])
         [actionSheet showFromBarButtonItem:(UIBarButtonItem*) view animated:YES];
     
+#if !__has_feature(objc_arc)
     [actionSheet release];
-    
+#endif
 }
 
 + (void) photoPickerWithTitle:(NSString*) title
@@ -79,19 +152,24 @@ static UIViewController *_presentVC;
                 onPhotoPicked:(PhotoPickedBlock) photoPicked                   
                      onCancel:(CancelBlock) cancelled
 {
+#if !__has_feature(objc_arc)
     [_cancelBlock release];
-    _cancelBlock  = [cancelled copy];
-    
     [_photoPickedBlock release];
+    [_presentVC release];
+#endif
+    _cancelBlock  = [cancelled copy];
     _photoPickedBlock  = [photoPicked copy];
     
-    [_presentVC release];
+#if !__has_feature(objc_arc)
     _presentVC = [presentVC retain];
+#else
+    _presentVC = presentVC;
+#endif
     
     int cancelButtonIndex = -1;
 
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:title 
-                                                             delegate:[self class] 
+                                                             delegate:(id<UIActionSheetDelegate>)[self class]
 													cancelButtonTitle:nil
 											   destructiveButtonTitle:nil
 													otherButtonTitles:nil];
@@ -121,8 +199,9 @@ static UIViewController *_presentVC;
     
     if([view isKindOfClass:[UIBarButtonItem class]])
         [actionSheet showFromBarButtonItem:(UIBarButtonItem*) view animated:YES];
-    
-    [actionSheet release];    
+#if !__has_feature(objc_arc)
+    [actionSheet release];
+#endif
 }
 
 
@@ -134,16 +213,20 @@ static UIViewController *_presentVC;
     
     _photoPickedBlock(editedImage);
 	[picker dismissModalViewControllerAnimated:YES];	
-	[picker autorelease];
+#if !__has_feature(objc_arc)
+    [picker autorelease];
+#endif
 }
 
 
 + (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     // Dismiss the image selection and close the program
-    [_presentVC dismissModalViewControllerAnimated:YES];    
+    [_presentVC dismissModalViewControllerAnimated:YES];
+#if !__has_feature(objc_arc)
 	[picker autorelease];
     [_presentVC release];
+#endif
     _cancelBlock();
 }
 
@@ -168,7 +251,7 @@ static UIViewController *_presentVC;
             
             
             UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-            picker.delegate = [self class];
+            picker.delegate = (id<UINavigationControllerDelegate,UIImagePickerControllerDelegate>)[self class];
             picker.allowsEditing = YES;
             
             if(buttonIndex == 1) 
@@ -188,4 +271,37 @@ static UIViewController *_presentVC;
         }
     }
 }
+
+- (void)setButtonTitleColor:(UIColor *)color
+{
+    for (id view in self.subviews) {
+        if ([view isKindOfClass:[UIButton class]]) {
+            [view setTitleColor:color forState:UIControlStateNormal];
+            [view setTitleColor:color forState:UIControlStateHighlighted];
+            [view setTitleColor:color forState:UIControlStateSelected];
+        }
+    }
+}
+
+- (void)setTitleColor:(UIColor *)color
+{
+    UILabel *label = [self valueForKey:@"_titleLabel"];
+    if (label) {
+        if (color)
+            [label setTextColor:color];
+    }
+}
+
+- (void)setLargeTitle:(BOOL)largeTitle
+{
+    if (largeTitle) {
+        UILabel *label = [self valueForKey:@"_titleLabel"];
+        if (label) {
+            UIFont *font = [UIFont boldSystemFontOfSize:17];
+            [label setFont:font];
+            [label setFrame:CGRectMake(0, label.frame.origin.y, self.frame.size.width, 34)];
+        }
+    }
+}
+
 @end

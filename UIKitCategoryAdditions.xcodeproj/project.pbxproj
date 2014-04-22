@@ -19,6 +19,7 @@
 		ABD7412213388C9E00899EE2 /* UIKitCategoryAdditionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD7411A13388C9E00899EE2 /* UIKitCategoryAdditionsViewController.m */; };
 		ABD7413913388D3400899EE2 /* UIActionSheet+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD7413613388D3400899EE2 /* UIActionSheet+MKBlockAdditions.m */; };
 		ABD7413A13388D3400899EE2 /* UIAlertView+MKBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD7413813388D3400899EE2 /* UIAlertView+MKBlockAdditions.m */; };
+		DEB1F5C41730E29300F54C7E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEB1F5C31730E29300F54C7E /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		ABD7413613388D3400899EE2 /* UIActionSheet+MKBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+MKBlockAdditions.m"; sourceTree = "<group>"; };
 		ABD7413713388D3400899EE2 /* UIAlertView+MKBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+MKBlockAdditions.h"; sourceTree = "<group>"; };
 		ABD7413813388D3400899EE2 /* UIAlertView+MKBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+MKBlockAdditions.m"; sourceTree = "<group>"; };
+		DEB1F5C31730E29300F54C7E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		AB5E753F1336DD790016813D = {
 			isa = PBXGroup;
 			children = (
+				DEB1F5C31730E29300F54C7E /* Default-568h@2x.png */,
 				ABD7413313388D3400899EE2 /* MKAdditions */,
 				ABD7410B13388C9E00899EE2 /* UIKitCategoryAdditions */,
 				AB5E754D1336DD790016813D /* Frameworks */,
@@ -143,6 +146,9 @@
 /* Begin PBXProject section */
 		AB5E75411336DD790016813D /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+			};
 			buildConfigurationList = AB5E75441336DD790016813D /* Build configuration list for PBXProject "UIKitCategoryAdditions" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -168,6 +174,7 @@
 				ABD7411B13388C9E00899EE2 /* InfoPlist.strings in Resources */,
 				ABD7411C13388C9E00899EE2 /* MainWindow.xib in Resources */,
 				ABD7411D13388C9E00899EE2 /* UIKitCategoryViewController.xib in Resources */,
+				DEB1F5C41730E29300F54C7E /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +228,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -238,6 +246,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -257,7 +266,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UIKitCategoryAdditions/UIKitCategoryAdditions-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "UIKitCategoryAdditions/UIKitCategoryAdditions-Info.plist";
 				PRODUCT_NAME = UIKitCategoryAdditions;
 				WRAPPER_EXTENSION = app;
@@ -271,7 +280,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UIKitCategoryAdditions/UIKitCategoryAdditions-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "UIKitCategoryAdditions/UIKitCategoryAdditions-Info.plist";
 				PRODUCT_NAME = UIKitCategoryAdditions;
 				VALIDATE_PRODUCT = YES;
